@@ -1,5 +1,13 @@
 # REACT ES6 Base Project
-### Installation
+##Description
+Base Project using React.js and ES6 Syntax.
+Gulp Script for starting up a server with liveReload and CSS Injection.
+
+###File Watchers
+* Transpiling and linting JSX and ES6
+* Compiling SCSS --> CSS
+
+## Installation
 
 You need Gulp installed globally:
 

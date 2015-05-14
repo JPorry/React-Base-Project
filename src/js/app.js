@@ -5,13 +5,13 @@ import Greeter from './components/Greeter';
 class Page extends React.Component{
 
     render(){
-        return(
+        return (
             <div>
-                <h1>Welcome!</h1>
+                <h1>Ready!</h1>
                 <Greeter />
             </div>
         );
     }
-};
+}
 
-React.render(<Page />, document.getElementById('here'));
+React.render(<Page />, document.getElementById('app'));

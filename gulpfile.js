@@ -13,19 +13,25 @@ var sass        = require('gulp-sass');
 var browserSync = require('browser-sync').create();
 var reload      = browserSync.reload;
 
+var eslint = require('gulp-eslint');
+
 var b = watchify(browserify({
-    entries: './src/app.js',
+    entries: './src/js/app.js',
     debug: true,
     cache: {},
     packageCache: {}
 }));
 
 function bundle(){
+    gulp.src(['./src/js/**/*.js'])
+        .pipe(eslint())
+        .pipe(eslint.format());
+
     return b.transform('babelify')
         .bundle()
         .pipe(source('bundle.js'))
         .pipe(gulp.dest('./dist/js'));
-};
+}
 
 function update(){
     return bundle().pipe(reload({stream: true}));
@@ -41,7 +47,7 @@ b.on('update', update);
 gulp.task('js', bundle);
 
 gulp.task('sass', function() {
-    return gulp.src("scss/app.scss")
+    return gulp.src("./src/scss/app.scss")
         .pipe(sass())
         .pipe(gulp.dest("./dist/css"))
         .pipe(reload({stream: true}));
